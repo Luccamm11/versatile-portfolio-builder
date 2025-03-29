@@ -58,11 +58,11 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className="border border-gray-200 hover:border-portfolio-300 hover:shadow-md transition-all animate-fade-in"
+              className="border border-gray-200 hover:border-portfolio-300 hover:shadow-md transition-all animate-fade-in animate-on-scroll portfolio-item"
               style={{animationDelay: `${index * 150}ms`}}
             >
               <CardHeader className="pb-3">
-                <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-lg flex items-center justify-center mb-4 floating-icon">
                   <service.icon size={24} />
                 </div>
                 <CardTitle className="text-xl font-bold text-gray-800">{service.title}</CardTitle>
@@ -72,7 +72,7 @@ const Services = () => {
               <CardContent>
                 <ul className="space-y-2">
                   {service.details.map((detail, detailIndex) => (
-                    <li key={detailIndex} className="text-gray-600 flex items-start">
+                    <li key={detailIndex} className="text-gray-600 flex items-start hover-scale" style={{animationDelay: `${(index * 150) + (detailIndex * 100)}ms`}}>
                       <span className="text-portfolio-600 mr-2">•</span>
                       <span>{detail}</span>
                     </li>
@@ -89,7 +89,7 @@ const Services = () => {
           </p>
           <a 
             href="#contact" 
-            className="inline-block bg-portfolio-600 hover:bg-portfolio-700 text-white font-medium py-3 px-8 rounded-lg transition-colors"
+            className="inline-block bg-portfolio-600 hover:bg-portfolio-700 text-white font-medium py-3 px-8 rounded-lg transition-colors hover-scale btn-highlight"
           >
             Entre em Contato
           </a>
