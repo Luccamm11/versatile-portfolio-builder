@@ -5,6 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import emailjs from 'emailjs-com';
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,25 +17,54 @@ const Contact = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulando envio do formulário
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // EmailJS service, template and user ID
+      // Você precisará criar uma conta no EmailJS e configurar estes parâmetros
+      const serviceID = 'service_default'; // Substitua pelo seu service ID
+      const templateID = 'template_default'; // Substitua pelo seu template ID
+      const userID = 'user_xxxxxxxxxxxxx'; // Substitua pelo seu user ID
+      
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Lucca Miranda',
+        reply_to: formData.email,
+      };
+      
+      await emailjs.send(serviceID, templateID, templateParams, userID);
+      
       setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
       
+      toast({
+        title: "Mensagem enviada!",
+        description: "Obrigado pelo contato. Responderei o mais breve possível.",
+      });
+      
       // Reset após 3 segundos
       setTimeout(() => setIsSubmitted(false), 3000);
-    }, 1500);
+    } catch (error) {
+      console.error('Erro ao enviar email:', error);
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente ou entre em contato via WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (

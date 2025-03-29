@@ -7,6 +7,7 @@ import Portfolio from '../components/Portfolio';
 import Services from '../components/Services';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   useEffect(() => {
@@ -44,6 +45,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      <Toaster />
     </div>
   );
 };
