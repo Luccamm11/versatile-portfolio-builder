@@ -31,9 +31,9 @@ const Contact = () => {
     try {
       // EmailJS service, template and user ID
       // Você precisará criar uma conta no EmailJS e configurar estes parâmetros
-      const serviceID = 'service_default'; // Substitua pelo seu service ID
-      const templateID = 'template_default'; // Substitua pelo seu template ID
-      const userID = 'user_xxxxxxxxxxxxx'; // Substitua pelo seu user ID
+      const serviceID = 'service_hw610wq'; // Substitua pelo seu service ID
+      const templateID = 'template_7djv97q'; // Substitua pelo seu template ID
+      const userID = 'public_IJfMCYtsWRXPyEMyS'; // Substitua pelo seu user ID
       
       const templateParams = {
         from_name: formData.name,
