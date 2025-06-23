@@ -9,13 +9,13 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">João Silva</h3>
+            <h3 className="text-xl font-bold mb-4">Lucca Miranda</h3>
             <p className="text-gray-400 mb-4 max-w-md">
-              Desenvolvedor web, criador de conteúdo e tradutor com foco em soluções
-              criativas e eficazes para projetos digitais diversos.
+              Desenvolvedor Full Stack especializado no stack MERN, automações Python 
+              e integrações com inteligência artificial para soluções inovadoras.
             </p>
             <p className="text-gray-400">
-              © {currentYear} João Silva. Todos os direitos reservados.
+              © {currentYear} Lucca Miranda. Todos os direitos reservados.
             </p>
           </div>
           
@@ -31,11 +31,11 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Serviços</h4>
+            <h4 className="text-lg font-semibold mb-4">Especialidades</h4>
             <ul className="space-y-2">
-              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Desenvolvimento Web</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Criação de Conteúdo</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Tradução para o Inglês</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Desenvolvimento MERN</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Automações Python</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Integrações IA</a></li>
             </ul>
           </div>
         </div>
@@ -46,8 +46,7 @@ const Footer = () => {
           </p>
           
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Política de Privacidade</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Termos de Uso</a>
+            <a href="#contact" className="text-gray-400 hover:text-white transition-colors">Entre em Contato</a>
           </div>
         </div>
       </div>

@@ -4,15 +4,20 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   const skills = [
-    { name: 'React', level: 90 },
-    { name: 'Node.js', level: 85 },
-    { name: 'Python', level: 80 },
-    { name: 'MongoDB', level: 75 },
-    { name: 'Express.js', level: 85 },
-    { name: 'IA/ML', level: 70 },
+    { name: 'HTML', level: 100 },
+    { name: 'CSS', level: 100 },
+    { name: 'JavaScript', level: 80 },
+    { name: 'MERN Stack', level: 90 },
+    { name: 'IA/ML', level: 85 },
+    { name: 'n8n', level: 90 },
   ];
   
   const timeline = [
+    {
+      year: '2025',
+      title: 'Aprimoramento Contínuo',
+      description: 'Aprimorando habilidades e iniciando novos projetos inovadores'
+    },
     {
       year: '2024',
       title: 'Especialização em IA',
