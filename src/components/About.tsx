@@ -1,37 +1,37 @@
 
-import { Code, FileText, Languages } from 'lucide-react';
+import { Code, Database, Bot } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   const skills = [
-    { name: 'HTML', level: 90 },
-    { name: 'CSS', level: 85 },
-    { name: 'JavaScript', level: 75 },
-    { name: 'Redação', level: 95 },
-    { name: 'Tradução', level: 90 },
-    { name: 'SEO', level: 80 },
+    { name: 'React', level: 90 },
+    { name: 'Node.js', level: 85 },
+    { name: 'Python', level: 80 },
+    { name: 'MongoDB', level: 75 },
+    { name: 'Express.js', level: 85 },
+    { name: 'IA/ML', level: 70 },
   ];
   
   const timeline = [
     {
+      year: '2024',
+      title: 'Especialização em IA',
+      description: 'Desenvolvimento de integrações com APIs de IA e automações'
+    },
+    {
       year: '2023',
-      title: 'Início da Jornada',
-      description: 'Começando a desenvolver meu portfólio e habilidades'
+      title: 'Stack MERN',
+      description: 'Domínio completo do stack MongoDB, Express, React e Node.js'
     },
     {
       year: '2022',
-      title: 'Aprendizado de Idiomas',
-      description: 'Aprofundamento nos estudos de tradução e inglês'
+      title: 'Python & Automações',
+      description: 'Desenvolvimento de scripts e automações em Python'
     },
     {
       year: '2021',
-      title: 'Formação em Desenvolvimento',
-      description: 'Estudo de tecnologias para desenvolvimento web'
-    },
-    {
-      year: '2020',
-      title: 'Especialização em Conteúdo',
-      description: 'Foco em técnicas de criação de conteúdo digital'
+      title: 'Início Full Stack',
+      description: 'Transição para desenvolvimento full stack'
     },
   ];
   
@@ -42,8 +42,8 @@ const About = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sobre Mim</h2>
           <div className="w-20 h-1 bg-portfolio-600 mx-auto mb-8"></div>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-            Sou um profissional com habilidades em desenvolvimento web e criação de conteúdo, 
-            buscando sempre soluções criativas e eficazes para cada projeto.
+            Sou um desenvolvedor full stack especializado no stack MERN, automações Python 
+            e integrações com inteligência artificial para soluções inovadoras.
           </p>
         </div>
         
@@ -51,15 +51,14 @@ const About = () => {
           <div className="space-y-6 animate-fade-in">
             <h3 className="text-2xl font-bold text-gray-800">Minha Jornada</h3>
             <p className="text-gray-600">
-              Sou um profissional com habilidades em desenvolvimento web e criação de conteúdo. 
-              Tenho experiência em HTML e CSS, o que me permite construir e personalizar páginas web 
-              com designs funcionais e estilizados. Sou especializado em redação de artigos e produção 
-              de conteúdo envolvente, criando textos claros, bem estruturados e otimizados para diferentes públicos.
+              Sou um desenvolvedor full stack com expertise no stack MERN (MongoDB, Express.js, React, Node.js). 
+              Especializo-me em criar aplicações web completas, desde o frontend responsivo até APIs robustas 
+              e bancos de dados eficientes.
             </p>
             <p className="text-gray-600 animate-fade-in" style={{animationDelay: '200ms'}}>
-              Além disso, possuo experiência em tradução para o inglês (EUA), adaptando conteúdos para 
-              alcance global. Meu objetivo é sempre aprimorar minhas habilidades e oferecer soluções 
-              criativas e eficazes para todos os meus clientes e projetos.
+              Além disso, desenvolvo automações em Python para otimizar processos e integro soluções de 
+              inteligência artificial em projetos, proporcionando funcionalidades avançadas e inovadoras. 
+              Meu foco é entregar soluções tecnológicas completas e eficazes.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
@@ -68,28 +67,28 @@ const About = () => {
                   <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mb-4">
                     <Code size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 mb-2">Desenvolvimento Web</h4>
-                  <p className="text-gray-600 text-sm">Sites responsivos e funcionais com HTML e CSS</p>
+                  <h4 className="font-bold text-gray-800 mb-2">Stack MERN</h4>
+                  <p className="text-gray-600 text-sm">Aplicações full stack com MongoDB, Express, React e Node.js</p>
                 </CardContent>
               </Card>
               
               <Card className="border border-portfolio-100 hover:shadow-md transition-shadow hover:border-portfolio-300 hover-scale" style={{animationDelay: '100ms'}}>
                 <CardContent className="p-6 flex flex-col items-center text-center">
                   <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mb-4">
-                    <FileText size={24} className="animate-pulse" />
+                    <Database size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 mb-2">Criação de Conteúdo</h4>
-                  <p className="text-gray-600 text-sm">Artigos envolventes e otimizados para SEO</p>
+                  <h4 className="font-bold text-gray-800 mb-2">Automações Python</h4>
+                  <p className="text-gray-600 text-sm">Scripts e automações para otimização de processos</p>
                 </CardContent>
               </Card>
               
               <Card className="border border-portfolio-100 hover:shadow-md transition-shadow hover:border-portfolio-300 hover-scale" style={{animationDelay: '200ms'}}>
                 <CardContent className="p-6 flex flex-col items-center text-center">
                   <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mb-4">
-                    <Languages size={24} className="animate-pulse" />
+                    <Bot size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 mb-2">Tradução</h4>
-                  <p className="text-gray-600 text-sm">Traduções precisas para o inglês (EUA)</p>
+                  <h4 className="font-bold text-gray-800 mb-2">Integrações IA</h4>
+                  <p className="text-gray-600 text-sm">Implementação de soluções com inteligência artificial</p>
                 </CardContent>
               </Card>
             </div>

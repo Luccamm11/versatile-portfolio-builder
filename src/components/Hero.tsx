@@ -14,13 +14,13 @@ const Hero = () => {
                 Lucca Miranda
               </h1>
               <h2 className="text-xl md:text-2xl text-gray-600 mt-2">
-                Desenvolvedor Web | Criador de Conteúdo | Tradutor
+                Desenvolvedor Full Stack | Automações Python | Integrações IA
               </h2>
             </div>
             
             <p className="text-gray-600 text-lg max-w-xl">
-              Sou um profissional versátil com habilidades em desenvolvimento web e criação de conteúdo, 
-              oferecendo soluções criativas e eficazes para diversos projetos digitais.
+              Desenvolvedor especializado no stack MERN, criação de automações Python 
+              e implementação de soluções com inteligência artificial para projetos inovadores.
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">

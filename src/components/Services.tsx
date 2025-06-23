@@ -1,44 +1,44 @@
 
-import { Code, FileText, Languages } from 'lucide-react';
+import { Code, Database, Bot } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Services = () => {
   const services = [
     {
-      title: 'Desenvolvimento Web',
-      description: 'Crio sites modernos, responsivos e funcionais utilizando as melhores práticas de HTML e CSS.',
+      title: 'Desenvolvimento MERN Stack',
+      description: 'Desenvolvo aplicações web completas usando MongoDB, Express.js, React e Node.js para soluções robustas e escaláveis.',
       details: [
-        'Desenvolvimento de sites responsivos',
-        'Landing pages otimizadas para conversão',
-        'Portfólios profissionais e criativos',
-        'Sites institucionais e corporativos',
-        'Manutenção e atualizações de sites'
+        'Aplicações web full stack completas',
+        'APIs RESTful com Express.js e Node.js',
+        'Interfaces modernas com React',
+        'Bancos de dados MongoDB otimizados',
+        'Autenticação e segurança avançada'
       ],
       icon: Code
     },
     {
-      title: 'Criação de Conteúdo',
-      description: 'Produzo conteúdo de qualidade, otimizado para SEO e focado em engajar e converter sua audiência.',
+      title: 'Automações Python',
+      description: 'Crio scripts e automações em Python para otimizar processos, extrair dados e aumentar a produtividade.',
       details: [
-        'Artigos para blogs e sites',
-        'Conteúdo para redes sociais',
-        'E-books e materiais educativos',
-        'Descrições de produtos e serviços',
-        'Revisão e otimização de textos existentes'
+        'Scripts de automação de tarefas',
+        'Web scraping e extração de dados',
+        'Processamento e análise de dados',
+        'Integração com APIs e sistemas',
+        'Bots e assistentes automatizados'
       ],
-      icon: FileText
+      icon: Database
     },
     {
-      title: 'Tradução para o Inglês',
-      description: 'Ofereço serviços de tradução precisa e contextualizada do português para o inglês americano.',
+      title: 'Integrações com IA',
+      description: 'Implemento soluções de inteligência artificial em aplicações, incluindo chatbots, análise de dados e processamento de linguagem natural.',
       details: [
-        'Tradução de sites e materiais de marketing',
-        'Documentos técnicos e manuais',
-        'Artigos científicos e acadêmicos',
-        'Legendas para vídeos e podcasts',
-        'Localização e adaptação cultural'
+        'Chatbots inteligentes com GPT',
+        'Análise de sentimentos e texto',
+        'Processamento de imagens com IA',
+        'Integração com APIs de IA (OpenAI, Google AI)',
+        'Sistemas de recomendação personalizados'
       ],
-      icon: Languages
+      icon: Bot
     }
   ];
 
@@ -49,8 +49,8 @@ const Services = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Meus Serviços</h2>
           <div className="w-20 h-1 bg-portfolio-600 mx-auto mb-8"></div>
           <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-            Ofereço soluções completas e personalizadas para atender às necessidades 
-            específicas de cada cliente, com foco em qualidade e resultados.
+            Ofereço soluções tecnológicas completas, desde desenvolvimento full stack 
+            até automações inteligentes e integração com IA para impulsionar seu negócio.
           </p>
         </div>
         
@@ -85,7 +85,7 @@ const Services = () => {
         
         <div className="mt-16 text-center animate-fade-in">
           <p className="text-xl text-gray-700 mb-6">
-            Precisa de um serviço personalizado? Vamos conversar sobre o seu projeto!
+            Precisa de uma solução tecnológica personalizada? Vamos conversar sobre o seu projeto!
           </p>
           <a 
             href="#contact" 
