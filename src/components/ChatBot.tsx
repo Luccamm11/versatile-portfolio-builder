@@ -1,6 +1,5 @@
-
 import { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User } from 'lucide-react';
+import { Send, Gem, User } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -119,7 +118,7 @@ const ChatBot = () => {
       <CardContent className="p-6 flex flex-col h-full">
         <div className="flex items-center mb-4 pb-4 border-b border-gray-100">
           <div className="w-10 h-10 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mr-3">
-            <Bot size={20} />
+            <Gem size={20} />
           </div>
           <div>
             <h3 className="font-bold text-gray-800">Assistente Virtual</h3>
@@ -142,7 +141,7 @@ const ChatBot = () => {
               >
                 <div className="flex items-start space-x-2">
                   {message.isBot && (
-                    <Bot size={16} className="mt-0.5 flex-shrink-0" />
+                    <Gem size={16} className="mt-0.5 flex-shrink-0" />
                   )}
                   {!message.isBot && (
                     <User size={16} className="mt-0.5 flex-shrink-0" />
@@ -157,7 +156,7 @@ const ChatBot = () => {
             <div className="flex justify-start">
               <div className="bg-gray-100 text-gray-800 p-3 rounded-lg max-w-[80%]">
                 <div className="flex items-center space-x-2">
-                  <Bot size={16} />
+                  <Gem size={16} />
                   <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
