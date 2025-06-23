@@ -1,8 +1,10 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Send, Gem, User } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   id: string;
@@ -23,6 +25,7 @@ const ChatBot = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -32,51 +35,46 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const getBotResponse = (userMessage: string): string => {
-    const message = userMessage.toLowerCase();
+  const sendToN8n = async (userMessage: string): Promise<string> => {
+    const webhookUrl = 'https://luccamm1.app.n8n.cloud/webhook-test/e5da9c7f-c4a2-4c1a-a476-3dad1d8fb3e9';
     
-    if (message.includes('experiência') || message.includes('experiencia') || message.includes('tempo')) {
-      return 'Lucca tem experiência sólida em desenvolvimento full stack, especializando-se no stack MERN desde 2023. Começou sua jornada em 2021 e vem evoluindo constantemente suas habilidades.';
+    try {
+      console.log('Enviando pergunta para n8n:', userMessage);
+      
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          question: userMessage,
+          timestamp: new Date().toISOString(),
+          user_agent: navigator.userAgent
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Resposta do n8n:', data);
+      
+      // Assumindo que a resposta vem no campo 'response' ou 'answer'
+      return data.response || data.answer || data.message || 'Desculpe, não consegui processar sua pergunta no momento.';
+      
+    } catch (error) {
+      console.error('Erro ao conectar com n8n:', error);
+      
+      toast({
+        title: "Erro de Conexão",
+        description: "Não foi possível conectar com o assistente. Tente novamente.",
+        variant: "destructive",
+      });
+      
+      // Fallback para resposta local em caso de erro
+      return 'Desculpe, estou com problemas de conexão no momento. Por favor, tente novamente ou entre em contato diretamente: luccammiranda@gmail.com';
     }
-    
-    if (message.includes('habilidades') || message.includes('tecnologias') || message.includes('stack')) {
-      return 'As principais habilidades do Lucca incluem: HTML/CSS (100%), JavaScript (80%), MERN Stack (90%), Python para automações, integrações com IA/ML (85%) e n8n para automações (90%).';
-    }
-    
-    if (message.includes('python') || message.includes('automação') || message.includes('automacao')) {
-      return 'Lucca desenvolve automações em Python para otimizar processos empresariais, scripts personalizados e integrações com APIs diversas. Também utiliza n8n para criar fluxos de automação visual.';
-    }
-    
-    if (message.includes('ia') || message.includes('inteligência artificial') || message.includes('inteligencia artificial') || message.includes('ai')) {
-      return 'Lucca integra soluções de IA em projetos web, trabalhando com APIs de grandes modelos de linguagem, processamento de texto e criação de chatbots inteligentes.';
-    }
-    
-    if (message.includes('mern') || message.includes('react') || message.includes('node') || message.includes('mongodb')) {
-      return 'O stack MERN (MongoDB, Express.js, React, Node.js) é a especialidade principal do Lucca. Ele cria aplicações web completas, desde interfaces responsivas até APIs robustas e bancos de dados eficientes.';
-    }
-    
-    if (message.includes('projetos') || message.includes('portfolio') || message.includes('trabalhos')) {
-      return 'Lucca trabalha em diversos projetos envolvendo desenvolvimento web full stack, automações para empresas e integrações com IA. Você pode ver alguns exemplos na seção Portfolio deste site.';
-    }
-    
-    if (message.includes('contato') || message.includes('email') || message.includes('whatsapp')) {
-      return 'Você pode entrar em contato com Lucca por email: luccammiranda@gmail.com ou WhatsApp: (37) 99808-4178. Ele está sempre disponível para discutir novos projetos!';
-    }
-    
-    if (message.includes('localização') || message.includes('localizacao') || message.includes('onde')) {
-      return 'Lucca está localizado em Minas Gerais, Brasil, mas trabalha remotamente com clientes de todo o país.';
-    }
-    
-    if (message.includes('preço') || message.includes('preco') || message.includes('valor') || message.includes('orçamento') || message.includes('orcamento')) {
-      return 'Os valores dos projetos variam conforme a complexidade e escopo. Entre em contato para um orçamento personalizado baseado nas suas necessidades específicas.';
-    }
-    
-    if (message.includes('prazo') || message.includes('tempo de entrega') || message.includes('quanto tempo')) {
-      return 'O prazo de entrega depende da complexidade do projeto. Projetos simples podem ser entregues em 1-2 semanas, enquanto sistemas mais complexos podem levar de 4-8 semanas.';
-    }
-    
-    // Respostas genéricas
-    return 'Interessante! Para informações mais específicas sobre esse tópico, recomendo entrar em contato diretamente com Lucca. Você pode perguntar sobre suas habilidades, projetos, experiência ou como ele pode ajudar no seu projeto.';
   };
 
   const handleSendMessage = async () => {
@@ -90,21 +88,26 @@ const ChatBot = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentMessage = inputMessage;
     setInputMessage('');
     setIsTyping(true);
 
-    // Simular delay de digitação
-    setTimeout(() => {
+    try {
+      const botResponseText = await sendToN8n(currentMessage);
+      
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: getBotResponse(inputMessage),
+        text: botResponseText,
         isBot: true,
         timestamp: new Date()
       };
       
       setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Erro ao processar resposta:', error);
+    } finally {
       setIsTyping(false);
-    }, 1000 + Math.random() * 1000);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -176,6 +179,7 @@ const ChatBot = () => {
             onKeyPress={handleKeyPress}
             placeholder="Digite sua pergunta..."
             className="flex-1"
+            disabled={isTyping}
           />
           <Button
             onClick={handleSendMessage}
