@@ -36,7 +36,7 @@ const ChatBot = () => {
   }, [messages]);
 
   const sendToN8n = async (userMessage: string): Promise<string> => {
-    const webhookUrl = 'https://luccamm1.app.n8n.cloud/webhook-test/e5da9c7f-c4a2-4c1a-a476-3dad1d8fb3e9';
+    const webhookUrl = 'https://luccamm1.app.n8n.cloud/webhook/e5da9c7f-c4a2-4c1a-a476-3dad1d8fb3e9';
     
     try {
       console.log('Enviando pergunta para n8n:', userMessage);
