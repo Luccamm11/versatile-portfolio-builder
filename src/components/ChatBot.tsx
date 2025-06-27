@@ -60,8 +60,8 @@ const ChatBot = () => {
       const data = await response.json();
       console.log('Resposta do n8n:', data);
       
-      // Assumindo que a resposta vem no campo 'response' ou 'answer'
-      return data.response || data.answer || data.message || 'Desculpe, não consegui processar sua pergunta no momento.';
+      // Usar o campo 'output' da resposta do n8n
+      return data.output || 'Desculpe, não consegui processar sua pergunta no momento.';
       
     } catch (error) {
       console.error('Erro ao conectar com n8n:', error);
