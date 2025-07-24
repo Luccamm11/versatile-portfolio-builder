@@ -11,6 +11,7 @@ import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   useEffect(() => {
+    window.scrollTo(0, 0); // <-- Adicione esta linha
     // Função para animar elementos quando eles entram na viewport
     const animateOnScroll = () => {
       const elements = document.querySelectorAll('.animate-on-scroll');
