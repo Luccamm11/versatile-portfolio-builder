@@ -39,7 +39,7 @@ const ChatBot = () => {
   // --- LÓGICA CORRIGIDA E FUNCIONAL ---
   const sendToN8n = async (userMessage: string): Promise<string> => {
     // IMPORTANTE: Coloque a URL correta do seu webhook n8n aqui
-    const webhookUrl = 'https://luccamm1.app.n8n.cloud/webhook/e5da9c7f-c4a2-4c1a-a476-3dad1d8fb3e9';
+    const webhookUrl = 'https://primary-production-37034.up.railway.app/webhook/chatbot-portfolio';
     
     try {
       const response = await fetch(webhookUrl, {
