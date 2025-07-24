@@ -52,7 +52,7 @@ const Chatbot: React.FC = () => {
 
     // ================== PONTO CHAVE DA INTEGRAÇÃO ==================
     //  Troque esta URL pela sua URL de PRODUÇÃO quando o workflow estiver ativado
-    const n8nWebhookUrl = 'https://primary-production-37034.up.railway.app/webhook-test/chatbot-portfolio';
+    const n8nWebhookUrl = 'https://primary-production-37034.up.railway.app/webhook/chatbot-portfolio';
     // ==============================================================
 
     try {
