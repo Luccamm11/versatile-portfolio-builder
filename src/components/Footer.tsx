@@ -1,11 +1,7 @@
-
 import { Heart } from 'lucide-react';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-gray-900 text-white py-12">
+  return <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -42,7 +38,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            Este site foi criado com <span className="inline-flex items-center"><Heart size={14} className="mx-1 text-red-500" /></span> usando React e Tailwind CSS
+            Este site foi criado com  usando React e Tailwind CSS
           </p>
           
           <div className="flex space-x-6">
@@ -50,8 +46,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
