@@ -41,7 +41,7 @@ const Hero = () => {
                 <img 
                   src="/public/images/logo-lucca.png" 
                   alt="Lucca Miranda" 
-                  className="w-full h-full object-cover bg-gray-100"
+                  className="w-full h-full object-contain bg-gray-100"
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 bg-portfolio-600 text-white px-4 py-2 rounded-full shadow-lg animate-bounce">
