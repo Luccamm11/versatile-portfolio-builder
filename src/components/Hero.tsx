@@ -14,7 +14,7 @@ const Hero = () => {
                 Lucca Miranda
               </h1>
               <h2 className="text-xl md:text-2xl text-gray-600 mt-2">
-                Desenvolvedor Full Stack | Automações Python | Integrações IA
+                Desenvolvedor Full Stack | mações Python | Integrações IA
               </h2>
             </div>
             
