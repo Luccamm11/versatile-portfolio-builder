@@ -1,171 +1,190 @@
-'use client';
+// src/components/ChatBot.tsx
 
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { Send, Gem, User } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
-// Define a estrutura de uma única mensagem
 interface Message {
-  role: 'user' | 'assistant';
-  content: string;
+  id: string;
+  text: string;
+  isBot: boolean;
+  timestamp: Date;
 }
 
-const Chatbot: React.FC = () => {
-  // Estado para armazenar o histórico de mensagens
-  const [messages, setMessages] = useState<Message[]>([]);
-  // Estado para armazenar o que o usuário está digitando
-  const [input, setInput] = useState('');
-  // Estado para controlar o indicador de "carregando"
-  const [isLoading, setIsLoading] = useState(false);
-  // Referência para o final da lista de mensagens, para rolar automaticamente
+const ChatBot = () => {
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      text: 'Olá! Sou o assistente virtual do Lucca Miranda. Posso responder perguntas sobre suas habilidades, experiência e projetos. O que você gostaria de saber?',
+      isBot: true,
+      timestamp: new Date()
+    }
+  ]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
-  // Efeito para adicionar a mensagem inicial do bot quando o componente é montado
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
-    setMessages([
-      {
-        role: 'assistant',
-        content: 'Olá! Sou o assistente virtual do Lucca Miranda. Posso responder perguntas sobre suas habilidades, experiência e projetos. O que você gostaria de saber?',
-      },
-    ]);
-  }, []);
+    scrollToBottom();
+  }, [messages, isTyping]);
 
-  // Efeito para rolar para a mensagem mais recente
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
-
-  // ====================================================================================
-  //  FUNÇÃO MODIFICADA PARA CONECTAR COM O N8N
-  // ====================================================================================
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Não envia se o input estiver vazio
-    if (!input.trim()) return;
-
-    // Adiciona a mensagem do usuário à lista de mensagens na tela
-    const userMessage: Message = { role: 'user', content: input };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
-
-    // Limpa o campo de input e ativa o indicador de "carregando"
-    const currentInput = input;
-    setInput('');
-    setIsLoading(true);
-
-    // ================== PONTO CHAVE DA INTEGRAÇÃO ==================
-    //  Troque esta URL pela sua URL de PRODUÇÃO quando o workflow estiver ativado
-    const n8nWebhookUrl = 'https://primary-production-37034.up.railway.app/webhook/chatbot-portfolio';
-    // ==============================================================
-
+  // --- LÓGICA CORRIGIDA E FUNCIONAL ---
+  const sendToN8n = async (userMessage: string): Promise<string> => {
+    // IMPORTANTE: Coloque a URL correta do seu webhook n8n aqui
+    const webhookUrl = 'https://luccamm1.app.n8n.cloud/webhook/e5da9c7f-c4a2-4c1a-a476-3dad1d8fb3e9';
+    
     try {
-      // Faz a requisição POST para o seu webhook do n8n
-      const response = await fetch(n8nWebhookUrl, {
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        // Envia a mensagem do usuário no corpo da requisição
-        // O n8n receberá um JSON assim: { "message": "texto do usuário" }
-        body: JSON.stringify({ message: currentInput }),
+        // O corpo da requisição que o seu n8n funcional espera
+        body: JSON.stringify({
+          question: userMessage
+        }),
       });
 
       if (!response.ok) {
-        throw new Error(`A requisição falhou: ${response.statusText}`);
+        throw new Error(`Erro HTTP: ${response.status}`);
       }
 
-      // Espera a resposta do n8n (que virá do nó "Respond to Webhook")
       const data = await response.json();
-
-      // Assume que o n8n vai retornar um JSON como: { "reply": "resposta do bot" }
-      const botMessage: Message = { role: 'assistant', content: data.reply };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-
+      
+      // *** A MUDANÇA CRUCIAL ESTÁ AQUI ***
+      // Lendo a resposta do campo "reply" que configuramos no n8n, em vez de "output"
+      return data.reply || 'Desculpe, não consegui processar sua pergunta no momento.';
+      
     } catch (error) {
-      console.error('Falha ao conectar com o assistente n8n:', error);
-      // Em caso de erro, exibe uma mensagem padrão
-      const errorMessage: Message = {
-        role: 'assistant',
-        content: 'Desculpe, estou com problemas de conexão no momento. Por favor, tente novamente ou entre em contato diretamente: luccammiranda@gmail.com',
-      };
-      setMessages((prevMessages) => [...prevMessages, errorMessage]);
-    } finally {
-      // Desativa o indicador de "carregando"
-      setIsLoading(false);
+      console.error('Erro ao conectar com n8n:', error);
+      
+      toast({
+        title: "Erro de Conexão",
+        description: "Não foi possível conectar com o assistente. Tente novamente.",
+        variant: "destructive",
+      });
+      
+      return 'Desculpe, estou com problemas de conexão no momento. Por favor, tente novamente ou entre em contato diretamente: luccammiranda@gmail.com';
     }
   };
 
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isTyping) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      text: inputMessage,
+      isBot: false,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    const currentMessage = inputMessage;
+    setInputMessage('');
+    setIsTyping(true);
+
+    try {
+      const botResponseText = await sendToN8n(currentMessage);
+      
+      const botResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: botResponseText,
+        isBot: true,
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Erro ao processar resposta:', error);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
+  };
+
+  // --- O RESTANTE DO CÓDIGO É O SEU CÓDIGO COM A UI BONITA ---
   return (
-    <div className="bg-gray-800 text-white rounded-lg shadow-xl max-w-md w-full flex flex-col h-[500px]">
-      <div className="bg-gray-900 p-4 rounded-t-lg">
-        <h2 className="text-xl font-bold">Assistente Virtual</h2>
-        <p className="text-sm text-gray-400">Pergunte sobre Lucca Miranda</p>
-      </div>
-      <div className="flex-1 p-4 overflow-y-auto">
-        <div className="flex flex-col space-y-4">
-          {messages.map((msg, index) => (
+    <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-shadow h-[600px] flex flex-col">
+      <CardContent className="p-6 flex flex-col h-full">
+        <div className="flex items-center mb-4 pb-4 border-b border-gray-100">
+          <div className="w-10 h-10 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mr-3">
+            <Gem size={20} />
+          </div>
+          <div>
+            <h3 className="font-bold text-gray-800">Assistente Virtual</h3>
+            <p className="text-sm text-gray-600">Pergunte sobre Lucca Miranda</p>
+          </div>
+        </div>
+        
+        <div className="flex-1 overflow-y-auto space-y-4 mb-4 p-2">
+          {messages.map((message) => (
             <div
-              key={index}
-              className={`flex items-end gap-2 ${
-                msg.role === 'user' ? 'justify-end' : ''
-              }`}
+              key={message.id}
+              className={`flex items-start gap-3 ${message.isBot ? 'justify-start' : 'justify-end'}`}
             >
+              {!message.isBot && <div className="w-8 h-8 rounded-full bg-portfolio-600 flex items-center justify-center flex-shrink-0 text-white"><User size={16} /></div>}
+              {message.isBot && <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 text-gray-600"><Gem size={16} /></div>}
+              
               <div
-                className={`rounded-lg p-3 max-w-xs ${
-                  msg.role === 'user'
-                    ? 'bg-blue-600 text-white rounded-br-none'
-                    : 'bg-gray-700 text-gray-300 rounded-bl-none'
+                className={`max-w-[80%] p-3 rounded-lg text-sm ${
+                  message.isBot
+                    ? 'bg-gray-100 text-gray-800'
+                    : 'bg-portfolio-600 text-white'
                 }`}
               >
-                <p className="text-sm">{msg.content}</p>
+                {message.text}
               </div>
             </div>
           ))}
-          {isLoading && (
-            <div className="flex items-end gap-2">
-              <div className="rounded-lg p-3 max-w-xs bg-gray-700 text-gray-300 rounded-bl-none">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse [animation-delay:0.2s]"></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse [animation-delay:0.4s]"></div>
-                </div>
-              </div>
-            </div>
+          
+          {isTyping && (
+             <div className="flex items-start gap-3 justify-start">
+               <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 text-gray-600"><Gem size={16} /></div>
+               <div className="bg-gray-100 text-gray-800 p-3 rounded-lg max-w-[80%]">
+                 <div className="flex items-center space-x-2">
+                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                 </div>
+               </div>
+             </div>
           )}
           <div ref={messagesEndRef} />
         </div>
-      </div>
-      <div className="p-4 bg-gray-800 border-t border-gray-700">
-        <form onSubmit={handleSubmit} className="flex items-center space-x-2">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
+        
+        <div className="flex space-x-2">
+          <Input
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
             placeholder="Digite sua pergunta..."
-            className="flex-1 bg-gray-700 rounded-full py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={isLoading}
+            className="flex-1"
+            disabled={isTyping}
           />
-          <button
-            type="submit"
-            className="bg-blue-600 rounded-full p-3 text-white hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={isLoading}
+          <Button
+            onClick={handleSendMessage}
+            className="bg-portfolio-600 hover:bg-portfolio-700 text-white"
+            disabled={!inputMessage.trim() || isTyping}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 12h14M12 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-        </form>
-      </div>
-    </div>
+            <Send size={16} />
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
-export default Chatbot;
+export default ChatBot;
