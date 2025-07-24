@@ -40,7 +40,7 @@ const Hero = () => {
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl hover:border-portfolio-400 transition-all duration-300">
                 <img 
                   src="/public/images/logo-lucca.png" 
-                  alt="Lucca Miranda" 
+                  alt="Luca Miranda" 
                   className="w-full h-full object-contain bg-gray-100"
                 />
               </div>
