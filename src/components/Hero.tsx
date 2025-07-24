@@ -7,6 +7,7 @@ const Hero = () => {
     <section id="home" className="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-br from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+          {/* Lado do Texto */}
           <div className="w-full md:w-1/2 space-y-6 animate-fade-in">
             <div className="space-y-2">
               <p className="text-portfolio-600 font-medium">Olá, eu sou</p>
@@ -35,13 +36,16 @@ const Hero = () => {
             </div>
           </div>
           
+          {/* Lado da Imagem (com as correções) */}
           <div className="w-full md:w-1/2 flex justify-center md:justify-end animate-fade-in-right">
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl hover:border-portfolio-400 transition-all duration-300">
+              {/* Container do Círculo */}
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center overflow-hidden border-4 border-white shadow-xl hover:border-portfolio-400 transition-all duration-300 bg-gray-100">
+                {/* Imagem com caminho correto e centralizada */}
                 <img 
-                  src="/public/images/logo-lucca.png" 
+                  src="/images/logo-lucca.png" 
                   alt="Lucca Miranda" 
-                  className="w-full h-full object-contain bg-gray-100"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 bg-portfolio-600 text-white px-4 py-2 rounded-full shadow-lg animate-bounce">
