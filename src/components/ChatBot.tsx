@@ -18,7 +18,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Olá! Sou o assistente virtual do Lucca Miranda. Posso responder perguntas sobre suas habilidades, experiência e projetos. O que você gostaria de saber?',
+      text: '⚠️ Assistente temporariamente indisponível. Por questões de orçamento, o bot está fora do ar. Para dúvidas, entre em contato diretamente: luccammiranda@gmail.com',
       isBot: true,
       timestamp: new Date()
     }
