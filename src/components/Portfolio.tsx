@@ -4,11 +4,17 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const Portfolio = () => {
-  const emptyState = {
-    title: 'Em Breve',
-    description: 'Ainda não tenho projetos para mostrar, mas estou trabalhando em novos conteúdos que serão adicionados em breve. Fique atento às atualizações!',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-  };
+  const projects = [
+    {
+      title: 'Site Portfólio Pessoal',
+      description: 'Meu site pessoal desenvolvido com React, TypeScript e Tailwind CSS, incluindo chatbot integrado com n8n para interação automatizada com visitantes.',
+      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'n8n'],
+      githubUrl: '#',
+      liveUrl: window.location.origin,
+      status: 'Concluído'
+    }
+  ];
 
   return (
     <section id="portfolio" className="section-padding bg-gray-50 overflow-hidden">
@@ -22,44 +28,57 @@ const Portfolio = () => {
           </p>
         </div>
         
-        <div className="flex flex-col items-center justify-center">
-          <Card className="w-full max-w-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow animate-fade-in portfolio-item">
-            <div className="h-64 overflow-hidden">
-              <img 
-                src={emptyState.image} 
-                alt="Em construção" 
-                className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
-              />
-            </div>
-            
-            <CardContent className="p-8 text-center">
-              <div className="w-20 h-20 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mx-auto mb-6 floating-icon">
-                <Construction size={40} />
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <Card key={index} className="overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow animate-fade-in portfolio-item">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                />
               </div>
               
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">{emptyState.title}</h3>
-              <p className="text-gray-600 mb-6">{emptyState.description}</p>
-              
-              <div className="flex flex-wrap gap-2 mb-6 justify-center">
-                <Badge variant="secondary" className="bg-portfolio-100 text-portfolio-700 hover:bg-portfolio-200">
-                  HTML
-                </Badge>
-                <Badge variant="secondary" className="bg-portfolio-100 text-portfolio-700 hover:bg-portfolio-200">
-                  CSS
-                </Badge>
-                <Badge variant="secondary" className="bg-portfolio-100 text-portfolio-700 hover:bg-portfolio-200">
-                  JavaScript
-                </Badge>
-                <Badge variant="secondary" className="bg-portfolio-100 text-portfolio-700 hover:bg-portfolio-200">
-                  React
-                </Badge>
-              </div>
-              
-              <Button className="bg-portfolio-600 hover:bg-portfolio-700 text-white mx-auto">
-                Volte em breve
-              </Button>
-            </CardContent>
-          </Card>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-xl font-bold text-gray-800">{project.title}</h3>
+                  <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                    {project.status}
+                  </Badge>
+                </div>
+                
+                <p className="text-gray-600 mb-4">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.technologies.map((tech, techIndex) => (
+                    <Badge key={techIndex} variant="secondary" className="bg-portfolio-100 text-portfolio-700 hover:bg-portfolio-200">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                
+                <div className="flex gap-3">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="flex items-center gap-2"
+                    onClick={() => window.open(project.githubUrl, '_blank')}
+                  >
+                    <Github size={16} />
+                    GitHub
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    className="bg-portfolio-600 hover:bg-portfolio-700 text-white flex items-center gap-2"
+                    onClick={() => window.open(project.liveUrl, '_blank')}
+                  >
+                    <ExternalLink size={16} />
+                    Ver Site
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
