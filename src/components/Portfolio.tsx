@@ -59,15 +59,6 @@ const Portfolio = () => {
                 
                 <div className="flex gap-3">
                   <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="flex items-center gap-2"
-                    onClick={() => window.open(project.githubUrl, '_blank')}
-                  >
-                    <Github size={16} />
-                    GitHub
-                  </Button>
-                  <Button 
                     size="sm" 
                     className="bg-portfolio-600 hover:bg-portfolio-700 text-white flex items-center gap-2"
                     onClick={() => window.open(project.liveUrl, '_blank')}
