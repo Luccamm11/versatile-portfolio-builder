@@ -33,7 +33,7 @@ const Portfolio = () => {
             <Card key={index} className="overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow animate-fade-in portfolio-item">
               <div className="h-48 overflow-hidden">
                 <img 
-                  src={project.image} 
+                  src="/images/logo-lucca.png" 
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
                 />
