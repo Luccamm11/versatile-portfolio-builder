@@ -8,10 +8,28 @@ const Portfolio = () => {
     {
       title: 'Site Portfólio Pessoal',
       description: 'Meu site pessoal desenvolvido com React, TypeScript e Tailwind CSS, incluindo chatbot integrado com n8n para interação automatizada com visitantes.',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+      image: '/images/logo-lucca.png',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'n8n'],
       githubUrl: '#',
       liveUrl: window.location.origin,
+      status: 'Concluído'
+    },
+    {
+      title: 'Excelentíssimo',
+      description: 'Uma plataforma de e-commerce moderna e elegante voltada para moda unissex, com design premium e experiência de compra fluida.',
+      image: '/images/excelentissimo.jpg',
+      technologies: ['React', 'Vite', 'Tailwind CSS', 'TypeScript'],
+      githubUrl: '#',
+      liveUrl: 'https://exmo-site.vercel.app/',
+      status: 'Concluído'
+    },
+    {
+      title: 'AuditoriaPro',
+      description: 'Sistema profissional de gestão de auditorias, focado em simplificar processos e aumentar a eficiência operacional de equipes.',
+      image: '/images/auditoriapro.jpg',
+      technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS'],
+      githubUrl: '#',
+      liveUrl: 'https://auditoriapro.vercel.app/',
       status: 'Concluído'
     }
   ];
@@ -27,28 +45,28 @@ const Portfolio = () => {
             Estou sempre buscando novos desafios para aprimorar minhas habilidades.
           </p>
         </div>
-        
+
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow animate-fade-in portfolio-item">
+            <Card key={index} className="overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow animate-fade-in portfolio-item flex flex-col">
               <div className="h-48 overflow-hidden">
-                <img 
-                  src="/images/logo-lucca.png" 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
                 />
               </div>
-              
-              <CardContent className="p-6">
+
+              <CardContent className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-xl font-bold text-gray-800">{project.title}</h3>
                   <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
                     {project.status}
                   </Badge>
                 </div>
-                
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                
+
+                <p className="text-gray-600 mb-4 flex-grow">{project.description}</p>
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech, techIndex) => (
                     <Badge key={techIndex} variant="secondary" className="bg-portfolio-100 text-portfolio-700 hover:bg-portfolio-200">
@@ -56,11 +74,11 @@ const Portfolio = () => {
                     </Badge>
                   ))}
                 </div>
-                
-                <div className="flex gap-3">
-                  <Button 
-                    size="sm" 
-                    className="bg-portfolio-600 hover:bg-portfolio-700 text-white flex items-center gap-2"
+
+                <div className="flex gap-3 mt-auto">
+                  <Button
+                    size="sm"
+                    className="bg-portfolio-600 hover:bg-portfolio-700 text-white flex items-center gap-2 w-full"
                     onClick={() => window.open(project.liveUrl, '_blank')}
                   >
                     <ExternalLink size={16} />
