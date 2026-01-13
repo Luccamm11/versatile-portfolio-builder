@@ -9,6 +9,7 @@ import Services from '../components/Services';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import { Toaster } from '@/components/ui/toaster';
+import { ModeToggle } from '../components/ModeToggle';
 
 const Index = () => {
   useEffect(() => {
@@ -16,26 +17,26 @@ const Index = () => {
     // Função para animar elementos quando eles entram na viewport
     const animateOnScroll = () => {
       const elements = document.querySelectorAll('.animate-on-scroll');
-      
+
       elements.forEach((element) => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
+
         if (elementTop < window.innerHeight - elementVisible) {
           element.classList.add('visible');
         }
       });
     };
-    
+
     // Adiciona o evento de scroll
     window.addEventListener('scroll', animateOnScroll);
     // Executa uma vez para animar elementos visíveis no carregamento
     animateOnScroll();
-    
+
     // Limpeza do evento
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
-  
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -49,6 +50,7 @@ const Index = () => {
       </main>
       <Footer />
       <Toaster />
+      <ModeToggle />
     </div>
   );
 };

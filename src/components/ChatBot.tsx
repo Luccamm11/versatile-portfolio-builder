@@ -40,7 +40,7 @@ const ChatBot = () => {
   const sendToN8n = async (userMessage: string): Promise<string> => {
     // IMPORTANTE: Coloque a URL correta do seu webhook n8n aqui
     const webhookUrl = 'https://primary-production-37034.up.railway.app/webhook/chatbot-portfolio';
-    
+
     try {
       const response = await fetch(webhookUrl, {
         method: 'POST',
@@ -58,20 +58,20 @@ const ChatBot = () => {
       }
 
       const data = await response.json();
-      
+
       // *** A MUDANÇA CRUCIAL ESTÁ AQUI ***
       // Lendo a resposta do campo "reply" que configuramos no n8n, em vez de "output"
       return data.reply || 'Desculpe, não consegui processar sua pergunta no momento.';
-      
+
     } catch (error) {
       console.error('Erro ao conectar com n8n:', error);
-      
+
       toast({
         title: "Erro de Conexão",
         description: "Não foi possível conectar com o assistente. Tente novamente.",
         variant: "destructive",
       });
-      
+
       return 'Desculpe, estou com problemas de conexão no momento. Por favor, tente novamente ou entre em contato diretamente: luccammiranda@gmail.com';
     }
   };
@@ -93,14 +93,14 @@ const ChatBot = () => {
 
     try {
       const botResponseText = await sendToN8n(currentMessage);
-      
+
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
         text: botResponseText,
         isBot: true,
         timestamp: new Date()
       };
-      
+
       setMessages(prev => [...prev, botResponse]);
     } catch (error) {
       console.error('Erro ao processar resposta:', error);
@@ -117,18 +117,18 @@ const ChatBot = () => {
 
   // --- O RESTANTE DO CÓDIGO É O SEU CÓDIGO COM A UI BONITA ---
   return (
-    <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-shadow h-[600px] flex flex-col">
+    <Card className="border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-md dark:shadow-slate-900 transition-shadow h-[600px] flex flex-col dark:bg-slate-950">
       <CardContent className="p-6 flex flex-col h-full">
-        <div className="flex items-center mb-4 pb-4 border-b border-gray-100">
-          <div className="w-10 h-10 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mr-3">
+        <div className="flex items-center mb-4 pb-4 border-b border-gray-100 dark:border-slate-800">
+          <div className="w-10 h-10 bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-600 dark:text-portfolio-400 rounded-full flex items-center justify-center mr-3">
             <Gem size={20} />
           </div>
           <div>
-            <h3 className="font-bold text-gray-800">Assistente Virtual</h3>
-            <p className="text-sm text-gray-600">Pergunte sobre Lucca Miranda</p>
+            <h3 className="font-bold text-gray-800 dark:text-white">Assistente Virtual</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Pergunte sobre Lucca Miranda</p>
           </div>
         </div>
-        
+
         <div className="flex-1 overflow-y-auto space-y-4 mb-4 p-2">
           {messages.map((message) => (
             <div
@@ -136,42 +136,41 @@ const ChatBot = () => {
               className={`flex items-start gap-3 ${message.isBot ? 'justify-start' : 'justify-end'}`}
             >
               {!message.isBot && <div className="w-8 h-8 rounded-full bg-portfolio-600 flex items-center justify-center flex-shrink-0 text-white"><User size={16} /></div>}
-              {message.isBot && <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 text-gray-600"><Gem size={16} /></div>}
-              
+              {message.isBot && <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-slate-800 flex items-center justify-center flex-shrink-0 text-gray-600 dark:text-gray-400"><Gem size={16} /></div>}
+
               <div
-                className={`max-w-[80%] p-3 rounded-lg text-sm ${
-                  message.isBot
-                    ? 'bg-gray-100 text-gray-800'
-                    : 'bg-portfolio-600 text-white'
-                }`}
+                className={`max-w-[80%] p-3 rounded-lg text-sm ${message.isBot
+                  ? 'bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200'
+                  : 'bg-portfolio-600 text-white'
+                  }`}
               >
                 {message.text}
               </div>
             </div>
           ))}
-          
+
           {isTyping && (
-             <div className="flex items-start gap-3 justify-start">
-               <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 text-gray-600"><Gem size={16} /></div>
-               <div className="bg-gray-100 text-gray-800 p-3 rounded-lg max-w-[80%]">
-                 <div className="flex items-center space-x-2">
-                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
-                 </div>
-               </div>
-             </div>
+            <div className="flex items-start gap-3 justify-start">
+              <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-slate-800 flex items-center justify-center flex-shrink-0 text-gray-600 dark:text-gray-400"><Gem size={16} /></div>
+              <div className="bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200 p-3 rounded-lg max-w-[80%]">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-gray-400 dark:bg-gray-600 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-gray-400 dark:bg-gray-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-gray-400 dark:bg-gray-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                </div>
+              </div>
+            </div>
           )}
           <div ref={messagesEndRef} />
         </div>
-        
+
         <div className="flex space-x-2">
           <Input
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Digite sua pergunta..."
-            className="flex-1"
+            className="flex-1 dark:bg-slate-900 dark:border-slate-800 dark:text-white"
             disabled={isTyping}
           />
           <Button

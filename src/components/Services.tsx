@@ -43,36 +43,36 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-white">
+    <section id="services" className="section-padding bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Meus Serviços</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Meus Serviços</h2>
           <div className="w-20 h-1 bg-portfolio-600 mx-auto mb-8"></div>
-          <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-            Ofereço soluções tecnológicas completas, desde desenvolvimento full stack 
+          <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg">
+            Ofereço soluções tecnológicas completas, desde desenvolvimento full stack
             até automações inteligentes e integração com IA para impulsionar seu negócio.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="border border-gray-200 hover:border-portfolio-300 hover:shadow-md transition-all animate-fade-in animate-on-scroll portfolio-item"
-              style={{animationDelay: `${index * 150}ms`}}
+            <Card
+              key={index}
+              className="border border-gray-200 dark:border-slate-800 dark:bg-slate-900/50 hover:border-portfolio-300 dark:hover:border-portfolio-500 hover:shadow-md transition-all animate-fade-in animate-on-scroll portfolio-item"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
               <CardHeader className="pb-3">
-                <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-lg flex items-center justify-center mb-4 floating-icon">
+                <div className="w-12 h-12 bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-600 dark:text-portfolio-400 rounded-lg flex items-center justify-center mb-4 floating-icon">
                   <service.icon size={24} />
                 </div>
-                <CardTitle className="text-xl font-bold text-gray-800">{service.title}</CardTitle>
-                <CardDescription className="text-gray-600">{service.description}</CardDescription>
+                <CardTitle className="text-xl font-bold text-gray-800 dark:text-white">{service.title}</CardTitle>
+                <CardDescription className="text-gray-600 dark:text-gray-400">{service.description}</CardDescription>
               </CardHeader>
-              
+
               <CardContent>
                 <ul className="space-y-2">
                   {service.details.map((detail, detailIndex) => (
-                    <li key={detailIndex} className="text-gray-600 flex items-start hover-scale" style={{animationDelay: `${(index * 150) + (detailIndex * 100)}ms`}}>
+                    <li key={detailIndex} className="text-gray-600 dark:text-gray-400 flex items-start hover-scale" style={{ animationDelay: `${(index * 150) + (detailIndex * 100)}ms` }}>
                       <span className="text-portfolio-600 mr-2">•</span>
                       <span>{detail}</span>
                     </li>
@@ -82,13 +82,13 @@ const Services = () => {
             </Card>
           ))}
         </div>
-        
+
         <div className="mt-16 text-center animate-fade-in">
-          <p className="text-xl text-gray-700 mb-6">
+          <p className="text-xl text-gray-700 dark:text-gray-300 mb-6">
             Precisa de uma solução tecnológica personalizada? Vamos conversar sobre o seu projeto!
           </p>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="inline-block bg-portfolio-600 hover:bg-portfolio-700 text-white font-medium py-3 px-8 rounded-lg transition-colors hover-scale btn-highlight"
           >
             Entre em Contato

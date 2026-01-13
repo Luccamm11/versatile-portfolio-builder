@@ -16,10 +16,10 @@ const Navbar = () => {
       } else {
         setIsScrolled(false);
       }
-      
+
       // Detecta a seção ativa
       const sections = ['home', 'about', 'portfolio', 'services', 'contact'];
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -47,7 +47,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-white/95 shadow-md backdrop-blur-sm' : 'py-5 bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-white/95 dark:bg-slate-950/95 shadow-md backdrop-blur-sm' : 'py-5 bg-transparent'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a href="#home" className="text-xl md:text-2xl font-bold text-portfolio-700 font-montserrat hover-scale">
           Lucca Miranda
@@ -59,11 +59,10 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`font-medium transition-colors relative story-link ${
-                activeSection === link.href.substring(1) 
-                  ? 'text-portfolio-600' 
-                  : 'text-gray-600 hover:text-portfolio-600'
-              }`}
+              className={`font-medium transition-colors relative story-link ${activeSection === link.href.substring(1)
+                  ? 'text-portfolio-600'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-portfolio-600 dark:hover:text-portfolio-500'
+                }`}
             >
               {link.name}
               {activeSection === link.href.substring(1) && (
@@ -80,7 +79,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-500 hover:text-portfolio-600 focus:outline-none"
+            className="text-gray-500 dark:text-gray-400 hover:text-portfolio-600 focus:outline-none"
           >
             {isOpen ? <X size={24} className="animate-fade-in" /> : <Menu size={24} className="animate-fade-in" />}
           </button>
@@ -89,17 +88,16 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-md py-4 px-4 animate-fade-in">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 shadow-md py-4 px-4 animate-fade-in">
           <div className="flex flex-col space-y-4">
             {navLinks.map((link, index) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`font-medium transition-colors animate-fade-in ${
-                  activeSection === link.href.substring(1) 
-                    ? 'text-portfolio-600' 
-                    : 'text-gray-600 hover:text-portfolio-600'
-                }`}
+                className={`font-medium transition-colors animate-fade-in ${activeSection === link.href.substring(1)
+                    ? 'text-portfolio-600'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-portfolio-600 dark:hover:text-portfolio-500'
+                  }`}
                 style={{ animationDelay: `${index * 50}ms` }}
                 onClick={() => setIsOpen(false)}
               >

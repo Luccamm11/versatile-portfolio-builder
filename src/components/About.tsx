@@ -4,14 +4,14 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   const skills = [
-    { name: 'HTML', level: 100 },
-    { name: 'CSS', level: 100 },
-    { name: 'JavaScript', level: 80 },
-    { name: 'MERN Stack', level: 90 },
-    { name: 'IA/ML', level: 85 },
-    { name: 'n8n', level: 90 },
+    { name: 'React / Next.js', level: 95 },
+    { name: 'Node.js / Express', level: 90 },
+    { name: 'TypeScript', level: 85 },
+    { name: 'n8n Automações', level: 95 },
+    { name: 'IA & LLMs', level: 90 },
+    { name: 'Python', level: 80 },
   ];
-  
+
   const timeline = [
     {
       year: '2025',
@@ -39,77 +39,76 @@ const About = () => {
       description: 'Transição para desenvolvimento full stack'
     },
   ];
-  
+
   return (
-    <section id="about" className="section-padding bg-white overflow-hidden">
+    <section id="about" className="section-padding bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sobre Mim</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Sobre Mim</h2>
           <div className="w-20 h-1 bg-portfolio-600 mx-auto mb-8"></div>
-          <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-            Sou um desenvolvedor full stack especializado no stack MERN, automações Python 
-            e integrações com inteligência artificial para soluções inovadoras.
+          <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg">
+            Sou um desenvolvedor full stack focado em criar soluções digitais de alto impacto,
+            combinando desenvolvimento web moderno com automações inteligentes para escalar negócios.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div className="space-y-6 animate-fade-in">
-            <h3 className="text-2xl font-bold text-gray-800">Minha Jornada</h3>
-            <p className="text-gray-600">
-              Sou um desenvolvedor full stack com expertise no stack MERN (MongoDB, Express.js, React, Node.js). 
-              Especializo-me em criar aplicações web completas, desde o frontend responsivo até APIs robustas 
-              e bancos de dados eficientes.
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white">Minha Jornada</h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Com ampla experiência no ecossistema JavaScript (React, Node.js), ajudo empresas e
+              empreendedores a transformarem ideias em produtos digitais escaláveis e eficientes.
             </p>
-            <p className="text-gray-600 animate-fade-in" style={{animationDelay: '200ms'}}>
-              Além disso, desenvolvo automações em Python para otimizar processos e integro soluções de 
-              inteligência artificial em projetos, proporcionando funcionalidades avançadas e inovadoras. 
-              Meu foco é entregar soluções tecnológicas completas e eficazes.
+            <p className="text-gray-600 dark:text-gray-400 animate-fade-in" style={{ animationDelay: '200ms' }}>
+              Meus serviços vão além do código: implemento fluxos de automação complexos com n8n
+              e integro Inteligência Artificial para otimizar processos operacionais, reduzindo custos
+              e aumentando a produtividade dos meus clientes.
             </p>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              <Card className="border border-portfolio-100 hover:shadow-md transition-shadow hover:border-portfolio-300 hover-scale">
+              <Card className="border border-portfolio-100 dark:border-slate-800 dark:bg-slate-900/50 hover:shadow-md transition-shadow hover:border-portfolio-300 dark:hover:border-portfolio-500 hover-scale">
                 <CardContent className="p-6 flex flex-col items-center text-center">
-                  <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-600 dark:text-portfolio-400 rounded-full flex items-center justify-center mb-4">
                     <Code size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 mb-2">Stack MERN</h4>
-                  <p className="text-gray-600 text-sm">Aplicações full stack com MongoDB, Express, React e Node.js</p>
+                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Web Design & Dev</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Criação de sites, landing pages e sistemas sob medida.</p>
                 </CardContent>
               </Card>
-              
-              <Card className="border border-portfolio-100 hover:shadow-md transition-shadow hover:border-portfolio-300 hover-scale" style={{animationDelay: '100ms'}}>
+
+              <Card className="border border-portfolio-100 dark:border-slate-800 dark:bg-slate-900/50 hover:shadow-md transition-shadow hover:border-portfolio-300 dark:hover:border-portfolio-500 hover-scale" style={{ animationDelay: '100ms' }}>
                 <CardContent className="p-6 flex flex-col items-center text-center">
-                  <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-600 dark:text-portfolio-400 rounded-full flex items-center justify-center mb-4">
                     <Database size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 mb-2">Automações Python</h4>
-                  <p className="text-gray-600 text-sm">Scripts e automações para otimização de processos</p>
+                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Automações n8n</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Integração de ferramentas e automação de fluxos de trabalho.</p>
                 </CardContent>
               </Card>
-              
-              <Card className="border border-portfolio-100 hover:shadow-md transition-shadow hover:border-portfolio-300 hover-scale" style={{animationDelay: '200ms'}}>
+
+              <Card className="border border-portfolio-100 dark:border-slate-800 dark:bg-slate-900/50 hover:shadow-md transition-shadow hover:border-portfolio-300 dark:hover:border-portfolio-500 hover-scale" style={{ animationDelay: '200ms' }}>
                 <CardContent className="p-6 flex flex-col items-center text-center">
-                  <div className="w-12 h-12 bg-portfolio-100 text-portfolio-600 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-600 dark:text-portfolio-400 rounded-full flex items-center justify-center mb-4">
                     <Bot size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 mb-2">Integrações IA</h4>
-                  <p className="text-gray-600 text-sm">Implementação de soluções com inteligência artificial</p>
+                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Soluções com IA</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Chatbots e sistemas inteligentes integrados com LLMs.</p>
                 </CardContent>
               </Card>
             </div>
           </div>
-          
+
           <div className="space-y-6 animate-fade-in-right">
-            <h3 className="text-2xl font-bold text-gray-800">Minhas Habilidades</h3>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white">Minhas Habilidades</h3>
             <div className="space-y-4">
               {skills.map((skill, index) => (
-                <div key={skill.name} className="space-y-2 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+                <div key={skill.name} className="space-y-2 animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
                   <div className="flex justify-between">
-                    <span className="font-medium text-gray-700">{skill.name}</span>
-                    <span className="text-gray-500">{skill.level}%</span>
+                    <span className="font-medium text-gray-700 dark:text-white">{skill.name}</span>
+                    <span className="text-gray-500 dark:text-gray-400">{skill.level}%</span>
                   </div>
-                  <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
+                  <div className="w-full h-2 bg-gray-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div
                       className="h-full bg-portfolio-600 rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${skill.level}%`, animationDelay: `${index * 200}ms` }}
                     ></div>
@@ -117,17 +116,17 @@ const About = () => {
                 </div>
               ))}
             </div>
-            
-            <h3 className="text-2xl font-bold text-gray-800 mt-10">Timeline</h3>
-            <div className="space-y-6 relative before:absolute before:inset-0 before:h-full before:w-0.5 before:bg-portfolio-100 before:left-3 before:ml-0.5">
+
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mt-10">Timeline</h3>
+            <div className="space-y-6 relative before:absolute before:inset-0 before:h-full before:w-0.5 before:bg-portfolio-100 dark:before:bg-slate-800 before:left-3 before:ml-0.5">
               {timeline.map((item, index) => (
-                <div key={index} className="relative pl-10 animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
+                <div key={index} className="relative pl-10 animate-fade-in" style={{ animationDelay: `${index * 150}ms` }}>
                   <div className="absolute left-0 top-1.5 w-7 h-7 bg-portfolio-500 text-white rounded-full flex items-center justify-center hover:bg-portfolio-700 transition-colors hover-scale">
                     <span className="text-xs font-bold">{item.year.substring(2)}</span>
                   </div>
                   <div className="border-l-4 border-portfolio-500 pl-4 py-1">
-                    <h4 className="font-bold text-gray-800">{item.title}</h4>
-                    <p className="text-gray-600 text-sm">{item.year} — {item.description}</p>
+                    <h4 className="font-bold text-gray-800 dark:text-white">{item.title}</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">{item.year} — {item.description}</p>
                   </div>
                 </div>
               ))}

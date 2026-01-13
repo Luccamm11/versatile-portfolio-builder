@@ -31,16 +31,34 @@ const Portfolio = () => {
       githubUrl: '#',
       liveUrl: 'https://auditoriapro.vercel.app/',
       status: 'Concluído'
+    },
+    {
+      title: 'Produto 48h',
+      description: 'Landing page otimizada para lançamentos rápidos e alta conversão, com design moderno e foco total em performance de vendas.',
+      image: '/images/produto48h.jpg',
+      technologies: ['Next.js', 'Tailwind CSS', 'Vercel'],
+      githubUrl: '#',
+      liveUrl: 'https://produto48h.vercel.app/',
+      status: 'Concluído'
+    },
+    {
+      title: 'DashCore',
+      description: 'Dashboard administrativo robusto com visualizações de dados avançadas, gestão de métricas em tempo real e interface personalizável.',
+      image: '/images/dashcore.png',
+      technologies: ['React', 'Tailwind CSS', 'Vite', 'Lucide React'],
+      githubUrl: '#',
+      liveUrl: 'https://dashcore.lovable.app/',
+      status: 'Concluído'
     }
   ];
 
   return (
-    <section id="portfolio" className="section-padding bg-gray-50 overflow-hidden">
+    <section id="portfolio" className="section-padding bg-gray-50 dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Meu Portfólio</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Meu Portfólio</h2>
           <div className="w-20 h-1 bg-portfolio-600 mx-auto mb-8"></div>
-          <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+          <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg">
             Aqui você poderá ver meus projetos e trabalhos conforme eles forem desenvolvidos.
             Estou sempre buscando novos desafios para aprimorar minhas habilidades.
           </p>
@@ -48,7 +66,7 @@ const Portfolio = () => {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow animate-fade-in portfolio-item flex flex-col">
+            <Card key={index} className="overflow-hidden border border-gray-200 dark:border-slate-800 dark:bg-slate-950 hover:shadow-lg transition-shadow animate-fade-in portfolio-item flex flex-col">
               <div className="h-48 overflow-hidden">
                 <img
                   src={project.image}
@@ -59,17 +77,17 @@ const Portfolio = () => {
 
               <CardContent className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-800">{project.title}</h3>
-                  <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white">{project.title}</h3>
+                  <Badge variant="outline" className="bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border-green-200 dark:border-green-800">
                     {project.status}
                   </Badge>
                 </div>
 
-                <p className="text-gray-600 mb-4 flex-grow">{project.description}</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-4 flex-grow">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="secondary" className="bg-portfolio-100 text-portfolio-700 hover:bg-portfolio-200">
+                    <Badge key={techIndex} variant="secondary" className="bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-700 dark:text-portfolio-300 hover:bg-portfolio-200 dark:hover:bg-portfolio-800/40">
                       {tech}
                     </Badge>
                   ))}
