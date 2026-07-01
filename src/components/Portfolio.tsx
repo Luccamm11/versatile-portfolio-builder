@@ -8,10 +8,19 @@ const Portfolio = () => {
     {
       title: 'Site Portfólio Pessoal',
       description: 'Meu site pessoal desenvolvido com React, TypeScript e Tailwind CSS, incluindo chatbot integrado com n8n para interação automatizada com visitantes.',
-      image: '/images/logo-lucca.png',
+      image: '/images/logo-nova.jpeg',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'n8n'],
       githubUrl: '#',
       liveUrl: window.location.origin,
+      status: 'Concluído'
+    },
+    {
+      title: 'Jéssica Miranda Beauty',
+      description: 'Landing page premium para espaço de estética, com agendamento integrado via WhatsApp, SEO local avançado, animações interativas e alta fidelidade visual.',
+      image: '/images/jessicamm-beauty.jpg',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'SEO', 'Responsivo'],
+      githubUrl: '#',
+      liveUrl: 'https://jessicamm-beauty.vercel.app',
       status: 'Concluído'
     },
     {

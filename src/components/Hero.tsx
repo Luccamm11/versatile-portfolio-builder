@@ -43,7 +43,7 @@ const Hero = () => {
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl hover:border-portfolio-400 transition-all duration-300 bg-gray-100 dark:bg-slate-800">
                 {/* Imagem com caminho correto e centralizada */}
                 <img
-                  src="/images/logo-lucca.png"
+                  src="/images/logo-nova.jpeg"
                   alt="Lucca Miranda"
                   className="w-full h-full object-contain"
                 />
