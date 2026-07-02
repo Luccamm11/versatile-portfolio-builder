@@ -56,7 +56,7 @@ const Portfolio = () => {
       image: '/images/dashcore.png',
       technologies: ['React', 'Tailwind CSS', 'Vite', 'Lucide React'],
       githubUrl: '#',
-      liveUrl: 'https://dashcore.lovable.app/',
+      liveUrl: 'https://dashcore-pro.vercel.app/',
       status: 'Concluído'
     }
   ];
