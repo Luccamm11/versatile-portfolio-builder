@@ -5,38 +5,38 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 const Services = () => {
   const services = [
     {
-      title: 'Desenvolvimento MERN Stack',
-      description: 'Desenvolvo aplicações web completas usando MongoDB, Express.js, React e Node.js para soluções robustas e escaláveis.',
+      title: 'Criação de Sites e Sistemas Web',
+      description: 'Desenvolvo páginas de vendas de alta performance, lojas virtuais completas (e-commerce) e sistemas web personalizados para as necessidades do seu negócio.',
       details: [
-        'Aplicações web full stack completas',
-        'APIs RESTful com Express.js e Node.js',
-        'Interfaces modernas com React',
-        'Bancos de dados MongoDB otimizados',
-        'Autenticação e segurança avançada'
+        'Sites rápidos, modernos e otimizados para o Google',
+        'Lojas virtuais seguras para vender online',
+        'Sistemas de gestão interna sob medida',
+        'Páginas de vendas (landing pages) focadas em conversão',
+        'Segurança de dados e design moderno adaptável para celular'
       ],
       icon: Code
     },
     {
-      title: 'Automações Python',
-      description: 'Crio scripts e automações em Python para otimizar processos, extrair dados e aumentar a produtividade.',
+      title: 'Automação de Tarefas & Robôs',
+      description: 'Crio robôs e sistemas que realizam trabalhos repetitivos de forma automática, liberando seu tempo e evitando erros humanos.',
       details: [
-        'Scripts de automação de tarefas',
-        'Web scraping e extração de dados',
-        'Processamento e análise de dados',
-        'Integração com APIs e sistemas',
-        'Bots e assistentes automatizados'
+        'Automação de planilhas e tarefas burocráticas',
+        'Extração automática de dados de sites da web (Web Scraping)',
+        'Conexão automática entre as ferramentas que você já usa',
+        'Sistemas de alertas e relatórios automatizados no seu WhatsApp/Email',
+        'Integração de sistemas legados ou plataformas diferentes'
       ],
       icon: Database
     },
     {
-      title: 'Integrações com IA',
-      description: 'Implemento soluções de inteligência artificial em aplicações, incluindo chatbots, análise de dados e processamento de linguagem natural.',
+      title: 'Atendimento & Soluções com IA',
+      description: 'Implemento Inteligência Artificial para melhorar o atendimento ao seu cliente, automatizar respostas e analisar dados complexos de forma simples.',
       details: [
-        'Chatbots inteligentes com GPT',
-        'Análise de sentimentos e texto',
-        'Processamento de imagens com IA',
-        'Integração com APIs de IA (OpenAI, Google AI)',
-        'Sistemas de recomendação personalizados'
+        'Assistentes virtuais e chatbots de atendimento inteligentes',
+        'Robôs de resposta rápida para leads de anúncios (ex: WhatsApp)',
+        'Classificação e leitura automática de documentos com IA',
+        'Integração de APIs de Inteligência Artificial (OpenAI GPT, Google Gemini)',
+        'Sistemas de recomendação de produtos automatizados'
       ],
       icon: Bot
     }

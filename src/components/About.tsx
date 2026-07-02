@@ -47,8 +47,8 @@ const About = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Sobre Mim</h2>
           <div className="w-20 h-1 bg-portfolio-600 mx-auto mb-8"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg">
-            Sou um desenvolvedor full stack focado em criar soluções digitais de alto impacto,
-            combinando desenvolvimento web moderno com automações inteligentes para escalar negócios.
+            Trabalho criando soluções digitais completas para quem precisa modernizar o próprio negócio,
+            atrair mais clientes através da internet ou economizar horas de trabalho através de automações inteligentes.
           </p>
         </div>
 
@@ -56,13 +56,10 @@ const About = () => {
           <div className="space-y-6 animate-fade-in">
             <h3 className="text-2xl font-bold text-gray-800 dark:text-white">Minha Jornada</h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Com ampla experiência no ecossistema JavaScript (React, Node.js), ajudo empresas e
-              empreendedores a transformarem ideias em produtos digitais escaláveis e eficientes.
+              Ajudo empresas, profissionais liberais (como clínicas, advogados e esteticistas) e empreendedores a criarem uma presença forte na internet. Desenvolvo desde páginas de vendas (landing pages) de alta conversão até sistemas web personalizados e fáceis de usar.
             </p>
             <p className="text-gray-600 dark:text-gray-400 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Meus serviços vão além do código: implemento fluxos de automação complexos com n8n
-              e integro Inteligência Artificial para otimizar processos operacionais, reduzindo custos
-              e aumentando a produtividade dos meus clientes.
+              Além de programar sites, sou especialista em criar robôs que automatizam tarefas repetitivas do dia a dia (como organizar informações, enviar mensagens automáticas e sincronizar sistemas) e em integrar Inteligência Artificial para otimizar seu tempo e reduzir seus custos operacionais.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
@@ -71,8 +68,8 @@ const About = () => {
                   <div className="w-12 h-12 bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-600 dark:text-portfolio-400 rounded-full flex items-center justify-center mb-4">
                     <Code size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Web Design & Dev</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Criação de sites, landing pages e sistemas sob medida.</p>
+                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Sites e Sistemas</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Páginas de vendas, sites institucionais, lojas virtuais e sistemas web sob medida.</p>
                 </CardContent>
               </Card>
 
@@ -81,8 +78,8 @@ const About = () => {
                   <div className="w-12 h-12 bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-600 dark:text-portfolio-400 rounded-full flex items-center justify-center mb-4">
                     <Database size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Automações n8n</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Integração de ferramentas e automação de fluxos de trabalho.</p>
+                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Automação de Processos</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Robôs e fluxos de automação para que seu negócio rode no automático.</p>
                 </CardContent>
               </Card>
 
@@ -91,8 +88,8 @@ const About = () => {
                   <div className="w-12 h-12 bg-portfolio-100 dark:bg-portfolio-900/30 text-portfolio-600 dark:text-portfolio-400 rounded-full flex items-center justify-center mb-4">
                     <Bot size={24} className="animate-pulse" />
                   </div>
-                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Soluções com IA</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Chatbots e sistemas inteligentes integrados com LLMs.</p>
+                  <h4 className="font-bold text-gray-800 dark:text-white mb-2">Inteligência Artificial</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Chatbots e sistemas com IA para atuar no atendimento ou análise inteligente.</p>
                 </CardContent>
               </Card>
             </div>

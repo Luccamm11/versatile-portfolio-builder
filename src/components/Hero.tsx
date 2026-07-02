@@ -14,15 +14,19 @@ const Hero = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-slate-100">
                 Lucca Miranda
               </h1>
-              <h2 className="text-xl md:text-2xl text-gray-600 dark:text-slate-300 mt-2">
-                Desenvolvedor Full Stack | Automações Python | Integrações IA
+              <h2 className="text-xl md:text-2xl text-gray-600 dark:text-slate-300 mt-2 font-medium">
+                Desenvolvimento Web, Automações e Inteligência Artificial
               </h2>
             </div>
 
             <p className="text-gray-600 dark:text-slate-400 text-lg max-w-xl">
-              Desenvolvedor especializado no stack MERN, criação de automações Python
-              e implementação de soluções com inteligência artificial para projetos inovadores.
+              Eu crio <strong>sites profissionais, lojas virtuais (e-commerce) e sistemas web de alto impacto</strong>. Também desenvolvo <strong>robôs e automações personalizadas</strong> para eliminar tarefas manuais e fazer o seu negócio rodar no automático, economizando tempo e reduzindo custos.
             </p>
+
+            <div className="text-sm border-l-2 border-portfolio-500 pl-4 text-gray-500 dark:text-slate-400 max-w-xl">
+              <strong className="text-gray-700 dark:text-slate-200">Para quem é meu trabalho?</strong>
+              <p className="mt-1">Empresas, comércios locais, clínicas, prestadores de serviços e empreendedores que querem vender mais online ou eliminar tarefas manuais repetitivas.</p>
+            </div>
 
             <div className="flex flex-wrap gap-4 pt-2">
               <Button className="bg-portfolio-600 hover:bg-portfolio-700 text-white animate-pulse">
