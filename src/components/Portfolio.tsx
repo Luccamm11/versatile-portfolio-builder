@@ -24,6 +24,15 @@ const Portfolio = () => {
       status: 'Concluído'
     },
     {
+      title: 'Visão Projetos Estratégicos',
+      description: 'Site institucional corporativo para empresa de engenharia contra incêndio e pânico, contendo integração de formulários do Google Docs, seleção de temas dinâmicos e otimização para SEO.',
+      image: '/images/visaoprojetos.svg',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Lucide Icons', 'Responsivo'],
+      githubUrl: '#',
+      liveUrl: 'https://visaoprojetos.com',
+      status: 'Concluído'
+    },
+    {
       title: 'Excelentíssimo',
       description: 'Uma plataforma de e-commerce moderna e elegante voltada para moda unissex, com design premium e experiência de compra fluida.',
       image: '/images/excelentissimo.jpg',
